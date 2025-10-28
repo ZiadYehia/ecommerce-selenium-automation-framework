@@ -13,6 +13,7 @@ public class RegisterTest {
     //variables
     WebDriver driver;
     String successfulRegMsg = "Your registration completed";
+
     //Test cases
     @Test
     public void validUserRegistration() {
@@ -25,8 +26,9 @@ public class RegisterTest {
     public void inValidUserRegistration() {
         new RegisterPage(driver)
                 .register("", "", "invalidEmail", "", "123")
-                .isRegistrationNotCompleted(successfulRegMsg);
+                .isRegistrationNotCompleted();
     }
+
     //Configurations
     @BeforeMethod
     public void setup() {

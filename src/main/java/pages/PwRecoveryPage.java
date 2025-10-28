@@ -11,7 +11,7 @@ public class PwRecoveryPage {
     //locators
 
     //constructor
-    public PwRecoveryPage(WebDriver driver){
+    public PwRecoveryPage(WebDriver driver) {
         this.driver = driver;
         this.actionsBot = new ActionsBot(driver);
 

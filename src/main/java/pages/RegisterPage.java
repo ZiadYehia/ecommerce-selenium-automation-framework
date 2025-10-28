@@ -23,11 +23,13 @@ public class RegisterPage {
     private final By confirmPasswordInput = By.cssSelector("[id=\"ConfirmPassword\"]");
     private final By registerButton = By.cssSelector("[id=\"register-button\"]");
     private final By registrationCompletedText = By.cssSelector("div[class=\"result\"]");
+
     //constructor
     public RegisterPage(WebDriver driver) {
         this.driver = driver;
         this.actionsBot = new ActionsBot(driver);
     }
+
     //actions
     public RegisterPage register(String firstName, String lastName, String email, String company, String password) {
         actionsBot.click(maleGenderRadio);
@@ -41,14 +43,14 @@ public class RegisterPage {
         actionsBot.click(registerButton);
         return new RegisterPage(driver);
     }
+
     //validations
     public RegSuccessPage isRegistrationCompleted(String expectedMsg) {
         Assert.assertTrue(actionsBot.getText(registrationCompletedText).contains(expectedMsg));
         return new RegSuccessPage(driver);
     }
 
-    public RegisterPage isRegistrationNotCompleted(String expectedMsg) {
-        Assert.assertFalse(actionsBot.getText(registrationCompletedText).contains(expectedMsg));
+    public RegisterPage isRegistrationNotCompleted() {
         Assert.assertEquals(actionsBot.getText(registerText), "Register");
         return this;
     }

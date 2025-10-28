@@ -13,24 +13,24 @@ import java.util.NoSuchElementException;
 public class WaitBot {
     private WebDriver driver;
 
-    public WaitBot (WebDriver driver){
+    public WaitBot(WebDriver driver) {
         this.driver = driver;
     }
 
-    public FluentWait<WebDriver> defaultFluentWait(){
-        return fluentWait(10L,10L);
+    public FluentWait<WebDriver> defaultFluentWait() {
+        return fluentWait(10L, 10L);
     }
 
-    private FluentWait<WebDriver> fluentWait(Long sec, Long millis){
+    private FluentWait<WebDriver> fluentWait(Long sec, Long millis) {
         return new FluentWait<WebDriver>(driver)
                 .withTimeout(Duration.ofSeconds(sec))
                 .pollingEvery(Duration.ofMillis(millis))
-                .withMessage("TimeOut as exceeded: "+sec+" seconds")
+                .withMessage("TimeOut as exceeded: " + sec + " seconds")
                 .ignoreAll(getExceptions());
     }
 
-    private ArrayList <Class<? extends Exception>> getExceptions(){
-        ArrayList <Class<? extends Exception>> exceptions = new ArrayList<>();
+    private ArrayList<Class<? extends Exception>> getExceptions() {
+        ArrayList<Class<? extends Exception>> exceptions = new ArrayList<>();
         exceptions.add(NoSuchElementException.class);
         exceptions.add(StaleElementReferenceException.class);
         exceptions.add(ElementClickInterceptedException.class);

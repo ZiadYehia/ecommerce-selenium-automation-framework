@@ -19,30 +19,29 @@ public class ActionsBot {
     // Click action
     public void click(By by) {
         waitBot.defaultFluentWait()
-                        .until(d->{
-                            try{
-                                WebElement element = d.findElement(by);
-                                new Actions(d).scrollToElement(element);
-                                element.click();
-                                return true;
-                            }catch (Exception e){
-                                return false;
-                            }
-                        });
-
+                .until(d -> {
+                    try {
+                        WebElement element = d.findElement(by);
+                        new Actions(d).scrollToElement(element);
+                        element.click();
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                });
     }
 
     // Type action
     public void type(By by, String text) {
         waitBot.defaultFluentWait()
-                .until(d->{
+                .until(d -> {
                     try {
                         WebElement element = d.findElement(by);
                         new Actions(d).scrollToElement(element);
                         element.clear();
                         element.sendKeys(text);
                         return true;
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         return false;
                     }
                 });
@@ -51,16 +50,16 @@ public class ActionsBot {
     // Get text action
     public String getText(By by) {
         return waitBot.defaultFluentWait()
-                .until(d->{
-                    try{
+                .until(d -> {
+                    try {
                         WebElement element = d.findElement(by);
                         new Actions(d).scrollToElement(element);
-                        if (!element.getText().isEmpty()){
+                        if (!element.getText().isEmpty()) {
                             return element.getText();
-                        }else {
+                        } else {
                             return null;
                         }
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         return null;
                     }
                 });
@@ -69,10 +68,10 @@ public class ActionsBot {
     // Get Current URL
     public String getCurrentUrl() {
         return waitBot.defaultFluentWait()
-                .until(d->{
-                    try{
+                .until(d -> {
+                    try {
                         return d.getCurrentUrl();
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         return null;
                     }
                 });
@@ -80,20 +79,20 @@ public class ActionsBot {
 
     // Get Dom Property
     public String getDomProperty(By by, String property) {
-            return waitBot.defaultFluentWait()
-                    .until(d->{
-                        try{
-                            WebElement element = d.findElement(by);
-                            new Actions(d).scrollToElement(element);
-                            String propValue = element.getDomProperty(property);
-                            if (!propValue.isEmpty()){
-                                return propValue;
-                            }else {
-                                return null;
-                            }
-                        }catch (Exception e){
+        return waitBot.defaultFluentWait()
+                .until(d -> {
+                    try {
+                        WebElement element = d.findElement(by);
+                        new Actions(d).scrollToElement(element);
+                        String propValue = element.getDomProperty(property);
+                        if (!propValue.isEmpty()) {
+                            return propValue;
+                        } else {
                             return null;
                         }
-                    });
+                    } catch (Exception e) {
+                        return null;
+                    }
+                });
     }
 }

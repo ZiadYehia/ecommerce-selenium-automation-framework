@@ -49,7 +49,7 @@ public class LoginPage {
     }
 
     public LoginPage isEyeIconWorking() {
-        Assert.assertEquals(actionsBot.getDomProperty(passwordInput,"type"), "text", "Eye icon is not working");
+        Assert.assertEquals(actionsBot.getDomProperty(passwordInput, "type"), "text", "Eye icon is not working");
         return new LoginPage(driver);
     }
 }

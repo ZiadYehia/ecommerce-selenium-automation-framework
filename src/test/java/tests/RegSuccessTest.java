@@ -14,15 +14,17 @@ public class RegSuccessTest {
     WebDriver driver;
     String successfulRegMsg = "Your registration completed";
     String homePageUrl = "https://demo.nopcommerce.com/";
+
     //Test cases
     @Test
-    public void continueTC(){
+    public void continueTC() {
         new RegisterPage(driver)
                 .register("ziad", "yehia", "ziadTest@gmail.com", "TestCompany", "P@ssw0rd")
                 .isRegistrationCompleted(successfulRegMsg)
                 .continueReg()
                 .isHomePageAppear(homePageUrl);
     }
+
     //Configurations
     @BeforeMethod
     public void setup() {
