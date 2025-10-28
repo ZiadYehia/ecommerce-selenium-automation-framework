@@ -1,5 +1,6 @@
 package tests;
 
+import drivers.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
@@ -18,7 +19,7 @@ public class RegisterTest {
     @Test
     public void validUserRegistration() {
         new RegisterPage(driver)
-                .register("ziad", "yehia", "ziadTest@gmail.com", "TestCompany", "P@ssw0rd")
+                .register("ziad", "yehia", "ziadTest2@gmail.com", "TestCompany", "P@ssw0rd")
                 .isRegistrationCompleted(successfulRegMsg);
     }
 
@@ -32,15 +33,13 @@ public class RegisterTest {
     //Configurations
     @BeforeMethod
     public void setup() {
-        EdgeOptions edgeOptions = new EdgeOptions();
-        edgeOptions.addArguments("--start-maximized");
-        driver = new EdgeDriver(edgeOptions);
+        driver = WebDriverFactory.initDriver("edge");
         driver.get("https://demo.nopcommerce.com/register?returnUrl=%2F");
     }
 
     @AfterMethod
     public void tearDown() {
-        driver.quit();
+        WebDriverFactory.quitDriver();
     }
 
 }
