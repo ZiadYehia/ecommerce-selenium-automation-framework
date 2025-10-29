@@ -3,23 +3,23 @@ package com.nopcommerce.drivers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ThreadGuard;
 
-public class WebDriverFactory {
+public class GUIDriver {
 
+    private final static String browser = PropertyReader.getProperty("browser");
     private static ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
 
-    private static WebDriver getDriver(String browser) {
+    public GUIDriver() {
         Browser browserType = Browser.valueOf(browser.toUpperCase());
         AbstractDriver abstractDriver = browserType.getDriverFactory();
-        return abstractDriver.createDriver();
+        WebDriver driver = ThreadGuard.protect(abstractDriver.createDriver());
+        driverThreadLocal.set(driver);
     }
 
-    public static WebDriver initDriver(String browser) {
-        WebDriver driver = ThreadGuard.protect(getDriver(browser));
-        driverThreadLocal.set(driver);
+    public WebDriver getDriver() {
         return driverThreadLocal.get();
     }
 
-    public static void quitDriver() {
+    public void quitDriver() {
         if (driverThreadLocal.get() != null) {
             driverThreadLocal.get().quit();
             driverThreadLocal.remove();

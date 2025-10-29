@@ -1,4 +1,4 @@
-package com.nopcommerce.bots;
+package com.nopcommerce.utils.bots;
 
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.ElementNotInteractableException;

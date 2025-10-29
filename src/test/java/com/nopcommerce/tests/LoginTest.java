@@ -1,6 +1,6 @@
-package tests;
+package com.nopcommerce.tests;
 
-import com.nopcommerce.drivers.WebDriverFactory;
+import com.nopcommerce.drivers.GUIDriver;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -24,12 +24,12 @@ public class LoginTest {
 
     @BeforeMethod
     public void setup() {
-        driver = WebDriverFactory.initDriver("edge");
+        driver = GUIDriver.initDriver("edge");
         driver.get("https://demo.nopcommerce.com/login?returnUrl=%2F");
     }
 
     @AfterMethod
     public void tearDown() {
-        WebDriverFactory.quitDriver();
+        GUIDriver.quitDriver();
     }
 }

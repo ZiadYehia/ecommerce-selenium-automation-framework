@@ -1,9 +1,11 @@
-package com.nopcommerce.bots;
+package com.nopcommerce.utils.bots;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import java.io.File;
 
 public class ActionsBot {
     private WebDriver driver;
@@ -22,7 +24,7 @@ public class ActionsBot {
                 .until(d -> {
                     try {
                         WebElement element = d.findElement(by);
-                        new Actions(d).scrollToElement(element);
+                        scrollToElementJs(by);
                         element.click();
                         return true;
                     } catch (Exception e) {
@@ -37,7 +39,7 @@ public class ActionsBot {
                 .until(d -> {
                     try {
                         WebElement element = d.findElement(by);
-                        new Actions(d).scrollToElement(element);
+                        scrollToElementJs(by);
                         element.clear();
                         element.sendKeys(text);
                         return true;
@@ -53,7 +55,7 @@ public class ActionsBot {
                 .until(d -> {
                     try {
                         WebElement element = d.findElement(by);
-                        new Actions(d).scrollToElement(element);
+                        scrollToElementJs(by);
                         if (!element.getText().isEmpty()) {
                             return element.getText();
                         } else {
@@ -83,7 +85,7 @@ public class ActionsBot {
                 .until(d -> {
                     try {
                         WebElement element = d.findElement(by);
-                        new Actions(d).scrollToElement(element);
+                        scrollToElementJs(by);
                         String propValue = element.getDomProperty(property);
                         if (!propValue.isEmpty()) {
                             return propValue;
@@ -92,6 +94,64 @@ public class ActionsBot {
                         }
                     } catch (Exception e) {
                         return null;
+                    }
+                });
+    }
+
+    public void scrollToElement(By by) {
+        waitBot.defaultFluentWait()
+                .until(d -> {
+                    try {
+                        WebElement element = driver.findElement(by);
+                        scrollToElementJs(by);
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                });
+    }
+
+    // Scroll to Element using javaScript with behavior auto , block center , inline center
+    public void scrollToElementJs(By by) {
+        waitBot.defaultFluentWait()
+                .until(d -> {
+                    try {
+                        WebElement element = driver.findElement(by);
+                        ((org.openqa.selenium.JavascriptExecutor) driver)
+                                .executeScript("arguments[0].scrollIntoView({behavior: 'auto', block: 'center', inline: 'center'});", element);
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                });
+    }
+
+    public WebElement findElement(By by) {
+        return waitBot.defaultFluentWait()
+                .until(d -> {
+                    try {
+                        WebElement element = d.findElement(by);
+                        scrollToElementJs(by);
+                        return element;
+                    } catch (Exception e) {
+                        return null;
+                    }
+                });
+    }
+
+    // Upload File
+
+    public void uploadFile(By by, String filePath) {
+        String fileAbsolutePath = System.getProperty("user.dir") + File.separator + filePath;
+        waitBot.defaultFluentWait()
+                .until(d -> {
+                    try {
+                        WebElement element = d.findElement(by);
+                        scrollToElementJs(by);
+                        element.sendKeys(fileAbsolutePath);
+                        return true;
+                    } catch (Exception e) {
+                        return false;
                     }
                 });
     }

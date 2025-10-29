@@ -1,6 +1,6 @@
 package com.nopcommerce.pages;
 
-import com.nopcommerce.bots.ActionsBot;
+import com.nopcommerce.utils.bots.ActionsBot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 
