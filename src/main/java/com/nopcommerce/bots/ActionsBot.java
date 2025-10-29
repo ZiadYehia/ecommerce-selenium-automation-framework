@@ -1,4 +1,4 @@
-package bots;
+package com.nopcommerce.bots;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

@@ -1,4 +1,4 @@
-package pages;
+package com.nopcommerce.pages;
 
 public class AddToCart {
     //variables

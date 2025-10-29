@@ -1,4 +1,4 @@
-package drivers;
+package com.nopcommerce.drivers;
 
 public enum Browser {
 

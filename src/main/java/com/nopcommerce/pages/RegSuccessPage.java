@@ -1,6 +1,6 @@
-package pages;
+package com.nopcommerce.pages;
 
-import bots.ActionsBot;
+import com.nopcommerce.bots.ActionsBot;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;

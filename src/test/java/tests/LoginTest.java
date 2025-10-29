@@ -1,13 +1,11 @@
 package tests;
 
-import drivers.WebDriverFactory;
+import com.nopcommerce.drivers.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.LoginPage;
+import com.nopcommerce.pages.LoginPage;
 
 public class LoginTest {
     //variables
@@ -18,7 +16,7 @@ public class LoginTest {
     @Test
     public void validLoginTC() {
         new LoginPage(driver)
-                .login("testtesttest@gmail.com", "asdasd")
+                .login("ziadTest22@gmail.com", "P@ssw0rd")
                 .isSuccessfulLogin(homePageUrl);
     }
 

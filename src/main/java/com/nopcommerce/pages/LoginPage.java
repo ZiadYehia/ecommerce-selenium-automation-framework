@@ -1,6 +1,6 @@
-package pages;
+package com.nopcommerce.pages;
 
-import bots.ActionsBot;
+import com.nopcommerce.bots.ActionsBot;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -37,6 +37,11 @@ public class LoginPage {
         return new PwRecoveryPage(driver);
     }
 
+    public LoginPage clickEyeIcon() {
+        actionsBot.click(eyeIcon);
+        return this;
+    }
+
     //validations
     public HomePage isSuccessfulLogin(String expectedHomeUrl) {
         Assert.assertEquals(actionsBot.getCurrentUrl(), expectedHomeUrl, "This is not HomePage URL");
@@ -48,8 +53,13 @@ public class LoginPage {
         return new LoginPage(driver);
     }
 
-    public LoginPage isEyeIconWorking() {
+    public LoginPage isEnableEyeIconWorking() {
         Assert.assertEquals(actionsBot.getDomProperty(passwordInput, "type"), "text", "Eye icon is not working");
+        return new LoginPage(driver);
+    }
+
+    public LoginPage isDisableEyeIconWorking() {
+        Assert.assertEquals(actionsBot.getDomProperty(passwordInput, "type"), "password", "Eye icon is not working");
         return new LoginPage(driver);
     }
 }

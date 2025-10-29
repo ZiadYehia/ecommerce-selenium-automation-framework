@@ -1,13 +1,14 @@
-package drivers;
+package com.nopcommerce.drivers;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
-public class EdgeFactory extends AbstractDriver {
 
-    private EdgeOptions getOptions() {
-        EdgeOptions options = new EdgeOptions();
+public class FirefoxFactory extends AbstractDriver {
+
+    private FirefoxOptions getOptions() {
+        FirefoxOptions options = new FirefoxOptions();
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-notifications");
         options.addArguments("--start-maximized");
@@ -16,6 +17,6 @@ public class EdgeFactory extends AbstractDriver {
     }
 
     public WebDriver createDriver() {
-        return new EdgeDriver(getOptions());
+        return new FirefoxDriver(getOptions());
     }
 }
