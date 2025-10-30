@@ -21,7 +21,7 @@ public class WaitManager {
         return fluentWait(10L, 10L);
     }
 
-    private FluentWait<WebDriver> fluentWait(Long sec, Long millis) {
+    public FluentWait<WebDriver> fluentWait(Long sec, Long millis) {
         return new FluentWait<WebDriver>(driver)
                 .withTimeout(Duration.ofSeconds(sec))
                 .pollingEvery(Duration.ofMillis(millis))

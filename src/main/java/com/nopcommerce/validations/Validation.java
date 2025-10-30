@@ -7,7 +7,7 @@ import org.testng.asserts.SoftAssert;
 // Soft Assertion
 public class Validation extends BaseAssertion {
     private static SoftAssert softAssert = new SoftAssert();
-    private static boolean flag = false; // Flag to track if there are any assertion done
+    private static boolean flag = false; // Flag to track if there are any assertions done
     public Validation(WebDriver driver) {
         super(driver);
     }
