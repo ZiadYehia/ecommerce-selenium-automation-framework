@@ -1,13 +1,13 @@
 package com.nopcommerce.pages;
 
-import com.nopcommerce.utils.bots.ActionsBot;
+import com.nopcommerce.utils.actions.ElementActions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 
 public class HomePage {
     //variables
     private WebDriver driver;
-    private ActionsBot actionsBot;
+    private ElementActions elementActions;
     //locators
     By welcomeMsg = By.cssSelector("[class=\"topic-block-title\"]");
     By loginLink = By.cssSelector("[class=\"ico-login\"]");
@@ -39,7 +39,7 @@ public class HomePage {
     //constructor
     public HomePage(WebDriver driver) {
         this.driver = driver;
-        this.actionsBot = new ActionsBot(driver);
+        this.elementActions = new ElementActions(driver);
 
     }
 

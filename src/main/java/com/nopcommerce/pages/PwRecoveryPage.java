@@ -1,6 +1,6 @@
 package com.nopcommerce.pages;
 
-import com.nopcommerce.utils.bots.ActionsBot;
+import com.nopcommerce.utils.actions.ElementActions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 
@@ -8,7 +8,7 @@ public class PwRecoveryPage {
 
     //variables
     private WebDriver driver;
-    private ActionsBot actionsBot;
+    private ElementActions elementActions;
     //locators
     By pwRecoveryTitle = By.cssSelector("[class=\"page-title\"]");
     By pwRecoveryMsg = By.cssSelector("[class=\"tooltip\"]");
@@ -19,7 +19,7 @@ public class PwRecoveryPage {
     //constructor
     public PwRecoveryPage(WebDriver driver) {
         this.driver = driver;
-        this.actionsBot = new ActionsBot(driver);
+        this.elementActions = new ElementActions(driver);
 
     }
 

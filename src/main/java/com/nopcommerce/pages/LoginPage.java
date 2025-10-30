@@ -1,6 +1,6 @@
 package com.nopcommerce.pages;
 
-import com.nopcommerce.utils.bots.ActionsBot;
+import com.nopcommerce.utils.actions.ElementActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -8,7 +8,7 @@ import org.testng.Assert;
 public class LoginPage {
     //variables
     private WebDriver driver;
-    private ActionsBot actionsBot;
+    private ElementActions elementActions;
     //locators
     private final By emailInput = By.cssSelector("[id=\"Email\"]");
     private final By passwordInput = By.cssSelector("[id=\"Password\"]");
@@ -20,46 +20,46 @@ public class LoginPage {
     //constructors
     public LoginPage(WebDriver driver) {
         this.driver = driver;
-        this.actionsBot = new ActionsBot(driver);
+        this.elementActions = new ElementActions(driver);
     }
 
     //actions
     public LoginPage login(String email, String password) {
-        actionsBot.type(emailInput, email);
-        actionsBot.type(passwordInput, password);
-        actionsBot.click(rememberMeCheck);
-        actionsBot.click(loginButton);
+        elementActions.type(emailInput, email);
+        elementActions.type(passwordInput, password);
+        elementActions.click(rememberMeCheck);
+        elementActions.click(loginButton);
         return new LoginPage(driver);
     }
 
     public PwRecoveryPage forgetPassword() {
-        actionsBot.click(forgotPassword);
+        elementActions.click(forgotPassword);
         return new PwRecoveryPage(driver);
     }
 
     public LoginPage clickEyeIcon() {
-        actionsBot.click(eyeIcon);
+        elementActions.click(eyeIcon);
         return this;
     }
 
     //validations
     public HomePage isSuccessfulLogin(String expectedHomeUrl) {
-        Assert.assertEquals(actionsBot.getCurrentUrl(), expectedHomeUrl, "This is not HomePage URL");
+        Assert.assertEquals(elementActions.getCurrentUrl(), expectedHomeUrl, "This is not HomePage URL");
         return new HomePage(driver);
     }
 
     public LoginPage isNotSuccessfulLogin(String expectedLoginUrl) {
-        Assert.assertEquals(actionsBot.getCurrentUrl(), expectedLoginUrl, "This is not LoginPage URL");
+        Assert.assertEquals(elementActions.getCurrentUrl(), expectedLoginUrl, "This is not LoginPage URL");
         return new LoginPage(driver);
     }
 
     public LoginPage isEnableEyeIconWorking() {
-        Assert.assertEquals(actionsBot.getDomProperty(passwordInput, "type"), "text", "Eye icon is not working");
+        Assert.assertEquals(elementActions.getDomProperty(passwordInput, "type"), "text", "Eye icon is not working");
         return new LoginPage(driver);
     }
 
     public LoginPage isDisableEyeIconWorking() {
-        Assert.assertEquals(actionsBot.getDomProperty(passwordInput, "type"), "password", "Eye icon is not working");
+        Assert.assertEquals(elementActions.getDomProperty(passwordInput, "type"), "password", "Eye icon is not working");
         return new LoginPage(driver);
     }
 }

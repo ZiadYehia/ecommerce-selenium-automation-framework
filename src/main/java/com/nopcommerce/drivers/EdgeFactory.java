@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 
-public class EdgeFactory extends AbstractDriver {
+public class EdgeFactory implements AbstractDriver {
 
     private EdgeOptions getOptions() {
         EdgeOptions options = new EdgeOptions();

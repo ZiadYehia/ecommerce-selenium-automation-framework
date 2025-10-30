@@ -1,4 +1,4 @@
-package com.nopcommerce.utils.bots;
+package com.nopcommerce.utils;
 
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.ElementNotInteractableException;
@@ -10,10 +10,10 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
-public class WaitBot {
-    private WebDriver driver;
+public class WaitManager {
+    private final WebDriver driver;
 
-    public WaitBot(WebDriver driver) {
+    public WaitManager(WebDriver driver) {
         this.driver = driver;
     }
 

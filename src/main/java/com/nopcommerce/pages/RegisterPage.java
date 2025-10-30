@@ -1,6 +1,6 @@
 package com.nopcommerce.pages;
 
-import com.nopcommerce.utils.bots.ActionsBot;
+import com.nopcommerce.utils.actions.ElementActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -9,7 +9,7 @@ public class RegisterPage {
 
     //variables
     private WebDriver driver;
-    private ActionsBot actionsBot;
+    private ElementActions elementActions;
     // locators
     private final By registerText = By.cssSelector("h1");
     private final By maleGenderRadio = By.cssSelector("[id=\"gender-male\"]");
@@ -27,31 +27,31 @@ public class RegisterPage {
     //constructor
     public RegisterPage(WebDriver driver) {
         this.driver = driver;
-        this.actionsBot = new ActionsBot(driver);
+        this.elementActions = new ElementActions(driver);
     }
 
     //actions
     public RegisterPage register(String firstName, String lastName, String email, String company, String password) {
-        actionsBot.click(maleGenderRadio);
-        actionsBot.type(firstNameInput, firstName);
-        actionsBot.type(lastNameInput, lastName);
-        actionsBot.type(emailInput, email);
-        actionsBot.click(newsletterCheckbox);
-        actionsBot.type(companayInput, company);
-        actionsBot.type(passwordInput, password);
-        actionsBot.type(confirmPasswordInput, password);
-        actionsBot.click(registerButton);
+        elementActions.click(maleGenderRadio);
+        elementActions.type(firstNameInput, firstName);
+        elementActions.type(lastNameInput, lastName);
+        elementActions.type(emailInput, email);
+        elementActions.click(newsletterCheckbox);
+        elementActions.type(companayInput, company);
+        elementActions.type(passwordInput, password);
+        elementActions.type(confirmPasswordInput, password);
+        elementActions.click(registerButton);
         return new RegisterPage(driver);
     }
 
     //validations
     public RegSuccessPage isRegistrationCompleted(String expectedMsg) {
-        Assert.assertTrue(actionsBot.getText(registrationCompletedText).contains(expectedMsg));
+        Assert.assertTrue(elementActions.getText(registrationCompletedText).contains(expectedMsg));
         return new RegSuccessPage(driver);
     }
 
     public RegisterPage isRegistrationNotCompleted() {
-        Assert.assertEquals(actionsBot.getText(registerText), "Register");
+        Assert.assertEquals(elementActions.getText(registerText), "Register");
         return this;
     }
 }

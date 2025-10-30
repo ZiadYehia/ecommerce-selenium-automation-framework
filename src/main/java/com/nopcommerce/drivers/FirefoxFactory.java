@@ -5,7 +5,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 
-public class FirefoxFactory extends AbstractDriver {
+public class FirefoxFactory implements AbstractDriver {
 
     private FirefoxOptions getOptions() {
         FirefoxOptions options = new FirefoxOptions();
